@@ -28,7 +28,6 @@
     "build-via-lerna": "lerna run build",
     "build-a": "pnpm run build --filter testing-pnpm-package-a",
     "build-pkgs": "pnpm run build --filter testing-pnpm-package-*",
-    "test": "pnpm test -r",
     "publish": "pnpm publish -r",
     "ci:version": "pnpm changelog && pnpx changeset version && pnpm install --no-frozen-lockfile && git add .",
     "ci:publish": "pnpm build-pkgs && git status && pnpm publish -r && pnpm changeset tag",
@@ -48,5 +47,8 @@
     "syncpack": "^5.8.15",
     "uvu": "^0.5.2",
     "watchlist": "^0.3.1"
+  },
+  "dependencies": {
+    "@playwright/test": "1.40.0"
   }
 }

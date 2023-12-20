@@ -10,7 +10,6 @@
   "sideEffects": false,
   "scripts": {
     "start": "npm run sync && concurrently 'npm:watch' 'npm:serve'",
-    "test": "uvu src '.test.([mc]js|[jt]sx?)$' -r esm",
     "serve": "servor dist index.html 8081 --reload --browse",
     "watch:test": "watchlist src tests -- npm run test",
     "watch:copy": "watchlist example -- npm run sync",
@@ -23,9 +22,14 @@
     "build:no-deps": "microbundle build -f iife,umd -o dist/browser-no-deps",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
-    "release:major": "npm version major && npm publish"
+    "release:major": "npm version major && npm publish",
+    "test": "playwright test --config=./playwright.config.js",
+    "test-browserstack": "browserstack-node-sdk playwright test --config=./playwright.config.js"
   },
   "keywords": [],
   "author": "DavidWells",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "browserstack-node-sdk": "latest"
+  }
 }
